@@ -1,21 +1,88 @@
 #include<stdio.h>
 #include <math.h>
+
+void fuli(){
+double F,P,I;
+int M,N;
+system("cls");
+printf("\t欢迎进入复利计算软件\n");
+printf("请输入存入本金:");
+scanf("%lf",&P);
+printf("请输入年利率:");
+scanf("%lf",&I);
+printf("请输入存入年限:");
+scanf("%d",&N);
+printf("请输入年复利次数:");
+scanf("%d",&M);
+printf("本金 年利率 存入年限 年复利次数\n");
+printf("%.2lf %.2lf %d %d",P,I,N,M);
+I=pow((1+I/M),M)-1;
+F=P*pow((1+I),N);
+printf("\n输出复利终值结果：%.2lf\n",F);
+}
+
+void danli()
+{
+
+double F,P,I;
+int N;
+system("cls");
+printf("\t欢迎进入单利计算软件\n");
+printf("请输入存入本金:");
+scanf("%lf",&P);
+printf("请输入年利率:");
+scanf("%lf",&I);
+printf("请输入存入年限:");
+scanf("%d",&N);
+printf("本金 年利率 存入年限 \n");
+printf("%.2lf %.2lf %d ",P,I,N);
+F=P+P*I*N;
+printf("\n输出复利终值结果：%.2lf\n",F);
+}
+
+void benjin()
+{
+double F,P,I;
+int M,N;
+system("cls");
+printf("\t欢迎进入本金计算软件\n");
+printf("请输入终值:");
+scanf("%lf",&F);
+printf("请输入年利率:");
+scanf("%lf",&I);
+printf("请输入存入年限:");
+scanf("%d",&N);
+printf("请输入年复利次数:");
+scanf("%d",&M);
+printf("终值 年利率 存入年限 年复利次数\n");
+printf("%.2lf %.2lf %d %d",F,I,N,M);
+I=pow((1+I/M),M)-1;
+P=F/pow((1+I),N);
+printf("\n输出本金结果：%.2lf\n",P);
+}
+
+
 main()
 {
-	double F,P,I;
-	int M,N;
-	printf("\t欢迎进入复利计算软件1.0\n");
-	printf("请输入存入本金:");
-	scanf("%lf",&P);
-	printf("请输入年利率:");
-    scanf("%lf",&I);
-    printf("请输入存入年限:");
-	scanf("%d",&N);
-	printf("请输入年复利次数:");
-	scanf("%d",&M);
-	printf("本金  年利率   存入年限  年复利次数\n");
-	printf("%.2lf   %.2lf    %d         %d",P,I,N,M);
-    I=pow((1+I/M),M)-1;
-	F=P*pow((1+I),N);
-	printf("\n输出复利终值结果：%.2lf\n",F);
+int i;
+printf("\t欢迎进入单复利计算软件2.0\n");
+printf("\n1.单利计算");
+printf("\n2.复利计算");
+printf("\n3.求本金");
+printf("\n请输出选择项:");
+scanf("%d",&i);
+switch(i)
+{
+case 1:
+danli();
+break;
+case 2:
+fuli();
+break;
+case 3:
+benjin();
+break;
+default:
+return 0;
+}
 }
