@@ -107,29 +107,54 @@ void dingqi(){
     int N;
     system("cls");
     printf("\t欢迎进入定期投资软件\n");
-    printf("请输入年投入:");
+    printf("请输入每期定投入投入:");
     scanf("%lf",&P);
-    printf("请输入年复合增长率:");
+    printf("请输入收益率:");
     scanf("%lf",&I);
-    printf("请输入持续投入年数:");
+    printf("请输入定期投数:");
     scanf("%d",&N);
-    printf("年投入\t年复合增长率\t持续投入年数\t\n");
-    printf("%.2lf\t%.2lf\t%d\t",P,I,N);
-    F=P*(1+I)*pow((1+I),N-1)/I;
+    printf("每期定投入投入\t收益率\t定期投数\t\n");
+    printf("%.2lf\t\t%.2lf\t%d\t",P,I,N);
+    F=P*(1+I)*(pow((1+I),N)-1)/I;
     printf("\n输出结果：%.2lf\n",F);
+}
+
+void huankuan()
+{
+    double F,P,I;
+    int N;
+    system("cls");
+    printf("\t欢迎进入等额本息法软件\n");
+    printf("请输入本金:");
+    scanf("%lf",&P);
+    printf("请输入季利率:");
+    scanf("%lf",&I);
+    printf("请输入期限:");
+    scanf("%d",&N);
+    printf("本金\t季利率\t期限\t\n");
+    printf("%.2lf\t%.2lf\t%d\t",P,I,N);
+    F=P*I*pow((1+I),N)/pow((1+I),N-1); 
+    printf("\n每季的还款额：%.2lf\n",F);
 }
 main()
 {
     int i;
-    printf("\t欢迎进入单复利计算软件3.0\n");
+AA:    printf("\t\n欢迎进入单复利计算软件3.0\n");
     printf("\n1.单利计算");
     printf("\n2.复利计算");
     printf("\n3.求本金");
     printf("\n4.求投资年限");
     printf("\n5.求投资项目利率估计");
-	printf("\n6.定期投资");
+    printf("\n6.定期投资");
+	printf("\n7.等额还款金额");
     printf("\n请输出选择项:");
-    scanf("%d",&i);
+    while(1){
+        scanf("%d",&i);
+        if(i>0&&i<8){           
+        break;}
+        system("cls");    
+        printf("\t\t输入错误，重新输入\n");
+    }
     switch(i)
     {
     case 1:
@@ -147,10 +172,13 @@ main()
     case 5:
         lilv();
         break;
-	case 6:
+    case 6:
         dingqi();
         break;
+    case 7:
+        huankuan();
+        break;
     default:
-        return 0;
+        goto AA;
     }
 }
